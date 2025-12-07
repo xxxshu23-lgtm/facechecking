@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Face</title>
+  <link rel="stylesheet" href="myStyle.css" />
+  <script src="myScript.js" defer></script>
+</head>
+
+<body onclick="location.href='guide.html'" style="cursor: pointer;">
+  <div class="first-page-container">
+    <!-- 모서리 프레임 -->
+    <div class="corner-frame top-left"></div>
+    <div class="corner-frame top-right"></div>
+    <div class="corner-frame bottom-left"></div>
+    <div class="corner-frame bottom-right"></div>
+
+    <!-- 왼쪽 네비 -->
+    <nav class="vertical-nav">
+      <div class="nav-line"></div>
+      <div class="nav-title">관상<br />초보편</div>
+
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <img src="img/ear.png" class="nav-icon" /><span>귀</span>
+        </li>
+        <li class="nav-item">
+          <img src="img/eyebrow.png" class="nav-icon" /><span>눈썹</span>
+        </li>
+        <li class="nav-item active">
+          <img src="img/eye.png" class="nav-icon" /><span>눈</span>
+        </li>
+        <li class="nav-item">
+          <img src="img/jaw.png" class="nav-icon" /><span>하관</span>
+        </li>
+        <li class="nav-item">
+          <img src="img/lip.png" class="nav-icon" /><span>입</span>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- 상단 카메라 HUD -->
+    <header class="top-bar">
+      <div class="cam-tag">#CAM 03</div>
+      <div class="top-center">
+        <img src="img/Group 5.png" class="battery-img" />
+        <img src="img/20.png" class="year-img" />
+      </div>
+    </header>
+
+    <!-- 메인 얼굴 + Annotation -->
+    <section class="main-card">
+      <div class="face-area zoom-in">
+        <img src="img/face.png" class="face-img" />
+
+        <!-- 👂 귀 -->
+        <div class="annotation-group ear-group">
+          <div class="info-box">
+            <h4>귀</h4>
+            귀는 성격적인 복과 지혜, 부모와 인연,<br />
+            성장 운을 본다. 반대로 귀가 얇다면,<br />
+            타고난 기반이 약하거나 덕이 부족함.
+          </div>
+          <img src="img/earBox.png" class="target-box-img" />
+        </div>
+
+        <!-- 👁️ 눈썹 -->
+        <div class="annotation-group eye-group">
+
+
+
+          <!-- 2) 이미지 박스 -->
+          <div class="eye-image-box">
+            <img src="img/1eyeCrop.png" class="eye-image" />
+          </div>
+
+          <!-- 👀 눈 -->
+          <div class="annotation-group eye-group">
+            <div class="info-box eye-info">
+              <div class="text-content">
+                <h4>눈 / 눈썹</h4>
+                눈 <br />마음의 창 — 정신 상태, 감정, 의지,정직함을 보여줌 (내면)
+                <br />눈썹 <br />감정 조절력, 인간관계, 협력·친구운 (외면)
+              </div>
+            </div>
+            <img src="img/eyeBox.png" class="target-box-img" />
+          </div>
+
+          <!-- 👄 입 -->
+          <div class="annotation-group mouth-group">
+            <div class="info-box">
+              <h4>입</h4>
+              언어, 사교성, 신뢰감, 재물운 대표.
+            </div>
+            <img src="img/mouthBox.png" class="target-box-img" />
+          </div>
+
+          <!-- ⌟ 하관 -->
+          <div class="annotation-group jaw-group">
+            <div class="info-box">
+              <h4>하관</h4>
+              인생 말년, 안정감, 현실감, 책임감 대표.
+            </div>
+          </div>
+        </div>
+
+        <!-- 타이틀 -->
+        <div class="main-text">
+          <h1> <span class="title-main">관상;</span>
+            <span class="title-sub">곁에 두면 안되는 사람</span>
+          </h1>
+        </div>
+    </section>
+  </div>
+  <div class="scan-line"></div>
+
+</body>
+
+</html>

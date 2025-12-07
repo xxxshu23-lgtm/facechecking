@@ -1,0 +1,195 @@
+/* =========================================
+   Base
+========================================= */
+:root {
+  --bg: #f9f9f3;
+  --ink: #4a5d1f;
+  --title: #3f5c1f;
+  --accent: #a8b26a;
+  --accent-dk: #8f9c57;
+
+  /* 레이아웃 튜닝값 */
+  --frame-w: 58vw; /* 장식 프레임 폭 (화면 비율 유지) */
+  --frame-w-max: 980px; /* 프레임 최대폭 */
+  --title-shift: 50px; /* 제목을 프레임 라인 쪽으로 내리는 정도 */
+  --content-up: -6%; /* 제목 묶음을 살짝 위로 올리기 */
+  --body-pad-y: 6vh; /* 위아래 여백 */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "KoPub Batang", serif;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: var(--body-pad-y);
+}
+
+/* =========================================
+     Frame (장식 이미지)
+  ========================================= */
+.face-reading {
+  position: relative;
+  width: 100%;
+}
+
+.decor-container {
+  position: relative;
+  width: var(--frame-w);
+  max-width: var(--frame-w-max);
+  margin: 0 auto;
+  z-index: 0;
+}
+
+.decor {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================================
+     Overlay Content (제목/본문/버튼)
+  ========================================= */
+.content {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transform: translateY(var(--content-up)); /* 프레임 안에서 살짝 위로 */
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+h1 {
+  margin: 0;
+  font-weight: 700;
+  color: var(--title);
+  line-height: 1.35;
+  font-size: clamp(24px, 3.3vw, 50px);
+  transform: translateY(var(--title-shift)); /* 프레임 라인 가까이 */
+}
+
+p {
+  max-width: 1000px;
+  margin: 200px auto 0; /* 선 아래로 충분히 내림 */
+  font-size: clamp(14px, 1.1vw, 18px);
+  line-height: 1.9;
+  color: var(--ink);
+  transition: opacity 0.3s ease;
+}
+
+/* =========================================
+     Next Button
+  ========================================= */
+.next-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-size: 18px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.next-link:hover {
+  transform: translateX(4px);
+  color: #627c3f;
+}
+
+.next-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+
+/* =========================================
+     Final Screen (마지막 화면)
+  ========================================= */
+.final-screen {
+  position: absolute;
+  inset: 0;
+  display: none; /* JS로 표시 전환 */
+  opacity: 0; /* JS로 1로 */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(var(--content-up));
+  z-index: 3;
+  transition: opacity 0.3s ease;
+}
+
+.final-screen h1 {
+  margin: 0;
+  font-weight: 700;
+  color: var(--title);
+  line-height: 1.35;
+  font-size: clamp(24px, 3.3vw, 50px);
+  transform: translateY(var(--title-shift));
+}
+
+.final-button {
+  background-color: var(--accent);
+  color: var(--title);
+  border: none;
+  border-radius: 999px;
+  padding: clamp(14px, 2.1vw, 20px) clamp(60px, 7vw, 100px);
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 700;
+  margin-top: 80px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.final-button:hover {
+  background-color: var(--accent-dk);
+  transform: translateY(-1px);
+}
+
+.final-text {
+  color: var(--accent);
+  font-size: clamp(12px, 1vw, 14px);
+  line-height: 1.8;
+  margin-top: 60px;
+  max-width: 620px;
+}
+
+/* =========================================
+     Responsive Tweaks
+  ========================================= */
+@media (max-width: 900px) {
+  :root {
+    --frame-w: 72vw;
+    --title-shift: 40px;
+    --content-up: -4%;
+  }
+
+  p {
+    margin-top: 160px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --frame-w: 82vw;
+    --title-shift: 32px;
+    --content-up: -2%;
+    --body-pad-y: 4vh;
+  }
+
+  p {
+    margin-top: 140px;
+  }
+}

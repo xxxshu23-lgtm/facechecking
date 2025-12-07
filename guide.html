@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>한국 관상; 얼굴로 읽는 운명의 지도</title>
+
+  <!-- 스타일 -->
+  <link rel="stylesheet" href="style_guide.css" />
+
+  <!-- 폰트 -->
+  <link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/KoPubBatang.css" rel="stylesheet" />
+</head>
+
+<body>
+  <main class="face-reading">
+    <!-- 장식 프레임 -->
+    <div class="decor-container">
+      <img src="img/Group 40.png" alt="장식" class="decor" />
+    </div>
+
+    <!-- 컨텐츠 -->
+    <section class="content">
+      <h1 id="title">한국 관상;<br />얼굴로 읽는 운명의 지도</h1>
+      <h2 id="subtitle" class="subtitle" aria-live="polite"></h2>
+
+      <p id="desc" class="desc">
+        한국 관상(觀相)은 얼굴의 생김새와 특징을 통해 그 사람의 성격, 운명,
+        재물운, 건강 등을 판단하는 전통적인 관찰 방법입니다.<br />
+        조선시대부터 이어져 온 이 전통은 동양 철학의 음양오행 사상에 기반을
+        두고 있으며,<br />
+        얼굴을 12개 또는 13개의 궁(宮)으로 나누어 각각의 의미를 해석합니다.
+      </p>
+
+      <!-- 내비게이션 버튼 -->
+      <div class="nav-buttons">
+        <a href="#" class="nav-btn prev" id="prevBtn" aria-label="이전 글">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M10.5 5.5a1 1 0 0 0-1.4-1.4L2.6 10.6a1 1 0 0 0 0 1.4l6.5 6.5a1 1 0 1 0 1.4-1.4L5.4 13H20a1 1 0 1 0 0-2H5.4l5.1-5.5Z"
+              fill="currentColor" />
+          </svg>
+          <span>이전 글</span>
+        </a>
+
+        <a href="#" class="nav-btn next" id="nextBtn" aria-label="다음 글">
+          <span>다음 글</span>
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M13.5 5.5a1 1 0 0 1 1.4-1.4l6.5 6.5a1 1 0 0 1 0 1.4l-6.5 6.5a1 1 0 1 1-1.4-1.4L18.6 13H4a1 1 0 1 1 0-2h14.6L13.5 5.5Z"
+              fill="currentColor" />
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const titleEl = document.getElementById("title");
+    const subtitleEl = document.getElementById("subtitle");
+    const descEl = document.getElementById("desc");
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+
+    const pages = [
+      {
+        title: "한국 관상;<br>얼굴로 읽는 운명의 지도",
+        subtitle: "",
+        desc: `한국 관상(觀相)은 얼굴의 생김새와 특징을 통해 그 사람의 성격, 운명,
+          재물운, 건강 등을 <br> 판단하는 전통적인 관찰 방법입니다.<br>
+          조선시대부터 이어져 온 이 전통은 동양 철학의 음양오행 사상에 기반을 두고 있으며,<br>
+          얼굴을 12개 또는 13개의 궁(宮)으로 나누어 각각의 의미를 해석합니다.`,
+      },
+      {
+        title: "한국 관상;<br>얼굴로 읽는 운명의 지도",
+        subtitle: "주요 관상 요소들",
+        desc: `이마는 초년운과 지혜를, 눈은 정신력과 감정을, 코는 재물운과 중년운을,<br>
+          입은 식복과 말복을, 귀는 건강과 장수를, 턱은 만년운을 나타낸다고 여겨집니다.<br>
+          얼굴의 균형, 피부 상태, 각 부위의 크기와 형태 등을 종합적으로 판단합니다.`,
+      },
+      {
+        title: "한국 관상;<br>얼굴로 읽는 운명의 지도",
+        subtitle: "관상과 문화의 연결",
+        desc: `관상은 오랫동안 축적된 경험적 관찰의 산물이며, 한국 문화의 흥미로운 한 부분입니다.<br>
+          첫인상이나 표정에서 어느 정도 성격을 유추할 수 있다는 심리학적 연구도 있긴 하지만,<br>
+          관상학은 과학적으로 검증된 학문이 아닙니다.`,
+      },
+    ];
+
+    let currentPage = 0;
+
+    function render() {
+      const { title, subtitle, desc } = pages[currentPage];
+
+      // 페이드 아웃
+      titleEl.style.opacity = 0;
+      descEl.style.opacity = 0;
+      subtitleEl.style.opacity = 0;
+
+      setTimeout(() => {
+        // 내용 갱신
+        titleEl.innerHTML = title;
+        descEl.innerHTML = desc;
+
+        // 서브타이틀
+        if (subtitle) {
+          subtitleEl.textContent = subtitle;
+          subtitleEl.classList.add("show");
+        } else {
+          subtitleEl.textContent = "";
+          subtitleEl.classList.remove("show");
+        }
+
+        // ✅ 첫 페이지에서만 본문 더 내려 배치
+        if (currentPage === 0) {
+          descEl.classList.add("first");
+        } else {
+          descEl.classList.remove("first");
+        }
+
+        // 버튼 상태
+        prevBtn.classList.toggle("disabled", currentPage === 0);
+
+        // 페이드 인
+        titleEl.style.opacity = 1;
+        descEl.style.opacity = 1;
+        subtitleEl.style.opacity = 1;
+      }, 180);
+    }
+
+    // 네비게이션
+    nextBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (currentPage < pages.length - 1) {
+        currentPage += 1;
+        render();
+      } else {
+        // 마지막: 다른 페이지로 이동
+        window.location.href = "intro.html";
+      }
+    });
+
+    prevBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (currentPage > 0) {
+        currentPage -= 1;
+        render();
+      }
+    });
+
+    // 초기 랜더
+    render();
+  </script>
+</body>
+
+</html>

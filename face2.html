@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>관상 테스트</title>
+
+  <!-- 폰트 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Noto Serif KR", serif;
+      background-color: #f9f9f3;
+      color: #334d00;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .question {
+      margin-top: 80px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #3a5700;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: #6b7a52;
+      margin-bottom: 50px;
+    }
+
+    .choices {
+      display: flex;
+      justify-content: center;
+      gap: 100px;
+      flex-wrap: wrap;
+    }
+
+    .choice {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* 영상 스타일 */
+    .choice video {
+      width: 280px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      background-color: transparent;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .choice video:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    button {
+      margin-top: 60px;
+      background-color: #a5b48e;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #8a9a70;
+      transform: scale(1.05);
+    }
+
+    /* 에러 화면 오버레이 */
+    .error-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .error-overlay img {
+      width: 300px;
+      max-width: 80%;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .choices {
+        flex-direction: column;
+        gap: 50px;
+      }
+
+      .choice video {
+        width: 220px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="question">
+    <h1>Q2. 사기칠 것 같은 관상</h1>
+    <p>본인의 뒷통수를 칠 것 같은 관상을 고르시오.</p>
+  </div>
+
+  <div class="choices">
+    <div class="choice">
+      <video src="video/face3.mp4" autoplay muted loop playsinline></video>
+      <button onclick="nextQuestion()">선택</button>
+    </div>
+
+    <div class="choice">
+      <video src="video/face4.mp4" autoplay muted loop playsinline></video>
+      <button onclick="showError()">선택</button>
+    </div>
+  </div>
+
+  <!-- 에러 이미지 오버레이 -->
+  <div class="error-overlay" id="errorOverlay">
+    <img src="img/error.png" alt="틀렸습니다 이미지" />
+  </div>
+
+  <script>
+    // 페이지 부드럽게 나타나기
+    window.addEventListener("load", () => {
+      document.body.style.opacity = "1";
+    });
+
+    // 정상 선택 → 다음 페이지로 전환
+    function nextQuestion() {
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        window.location.href = "fraud/index.html";
+      }, 500);
+    }
+
+    // 잘못된 선택 → 에러 이미지 보여주기
+    function showError() {
+      const overlay = document.getElementById("errorOverlay");
+      overlay.style.display = "flex";
+
+      // 2초 후 다음 질문으로 이동
+      setTimeout(() => {
+        overlay.style.display = "none";
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+          window.location.href = "fraud/index.html";
+        }, 500);
+      }, 2000);
+    }
+  </script>
+</body>
+
+</html>

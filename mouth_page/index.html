@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>결과 공개 - 관상 팩트 체크</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <main class="result-page">
+    <div class="container">
+      <!-- 타이틀 -->
+      <h1 class="page-title">결과 공개</h1>
+
+      <!-- 얼굴 이미지 컨테이너 -->
+      <div class="face-container">
+        <!-- 기본 얼굴 -->
+        <img src="../img/real.png" alt="결과 얼굴" class="face-illustration" />
+
+        <!-- 자동 확대용 박스 이미지들 -->
+        <img src="../img/eye_detail2.png" alt="눈" class="box-img eye-box" />
+        <img src="../img/nose.png" alt="코" class="box-img nose-box" />
+        <img src="../img/lips.png" alt="입" class="box-img mouth-box" />
+      </div>
+
+      <!-- 안내 문구 -->
+      <p class="info-text">
+        ※ 관상은 과학적 근거가 없으니 참고로 보시는 것이 좋습니다.
+      </p>
+
+      <!-- 네비게이션 -->
+      <div class="navigation-buttons">
+        <button class="nav-btn prev-btn" type="button">
+          <span class="arrow">←</span> 이전
+        </button>
+        <button class="nav-btn next-btn" id="moreInfoBtn">더 알아보기</button>
+        <button class="nav-btn next-btn" type="button">
+          다음 <span class="arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- JS 파일 연결 -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

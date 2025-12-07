@@ -1,0 +1,366 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Serif KR', serif;
+    background-color: #F9F9F4;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4A4A3A;
+}
+
+.container {
+    width: 1920px;
+    max-width: 100%;
+    padding: 60px 40px;
+}
+
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 장식 라인 스타일 */
+.decorative-line {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.top-line {
+    margin-bottom: 35px;
+}
+
+.bottom-line {
+    margin-top: 35px;
+    margin-bottom: 60px;
+}
+
+/* 라인 래퍼 - 3개의 평행선 */
+.line-wrapper {
+    position: relative;
+    flex: 1;
+    height: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 20px;
+}
+
+.line-main {
+    width: 100%;
+    height: 1px;
+    background-color: #8B956D;
+}
+
+.line-secondary {
+    width: 100%;
+    height: 1px;
+    background-color: #8B956D;
+}
+
+.line-wrapper::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #8B956D;
+}
+
+/* 코너 장식 - 3개 평행선 L자 구조 */
+.corner-decoration {
+    width: 18px;
+    height: 10px;
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.corner-decoration .corner-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* ============ 상단 왼쪽 코너 ============ */
+/* 수직선 3개 */
+.corner-decoration.top-left::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    background-color: #8B956D;
+    left: 0;
+    bottom: 0;
+}
+
+.corner-decoration.top-left .corner-inner::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    background-color: #8B956D;
+    left: 3px;
+    bottom: 0;
+}
+
+.corner-decoration.top-left .corner-inner::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    background-color: #8B956D;
+    left: 6px;
+    bottom: 0;
+}
+
+/* 수평선 3개 (왼쪽에서 시작) */
+.corner-decoration.top-left::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 1px;
+    background-color: #8B956D;
+    left: 0;
+    bottom: 5px;
+}
+
+/* ============ 상단 오른쪽 코너 ============ */
+/* 수직선 3개 */
+.corner-decoration.top-right::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    background-color: #8B956D;
+    right: 0;
+    bottom: 0;
+}
+
+.corner-decoration.top-right .corner-inner::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    background-color: #8B956D;
+    right: 3px;
+    bottom: 0;
+}
+
+.corner-decoration.top-right .corner-inner::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    background-color: #8B956D;
+    right: 6px;
+    bottom: 0;
+}
+
+/* 수평선 3개 (오른쪽에서 시작) */
+.corner-decoration.top-right::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 1px;
+    background-color: #8B956D;
+    right: 0;
+    bottom: 5px;
+}
+
+/* ============ 하단 왼쪽 코너 ============ */
+/* 수직선 3개 */
+.corner-decoration.bottom-left::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    background-color: #8B956D;
+    left: 0;
+    top: 0;
+}
+
+.corner-decoration.bottom-left .corner-inner::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    background-color: #8B956D;
+    left: 3px;
+    top: 0;
+}
+
+.corner-decoration.bottom-left .corner-inner::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    background-color: #8B956D;
+    left: 6px;
+    top: 0;
+}
+
+/* 수평선 3개 (왼쪽에서 시작) */
+.corner-decoration.bottom-left::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 1px;
+    background-color: #8B956D;
+    left: 0;
+    top: 5px;
+}
+
+/* ============ 하단 오른쪽 코너 ============ */
+/* 수직선 3개 */
+.corner-decoration.bottom-right::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    background-color: #8B956D;
+    right: 0;
+    top: 0;
+}
+
+.corner-decoration.bottom-right .corner-inner::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    background-color: #8B956D;
+    right: 3px;
+    top: 0;
+}
+
+.corner-decoration.bottom-right .corner-inner::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    background-color: #8B956D;
+    right: 6px;
+    top: 0;
+}
+
+/* 수평선 3개 (오른쪽에서 시작) */
+.corner-decoration.bottom-right::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 1px;
+    background-color: #8B956D;
+    right: 0;
+    top: 5px;
+}
+
+/* 메인 타이틀 */
+.main-title {
+    font-size: 52px;
+    font-weight: 500;
+    color: #8B956D;
+    letter-spacing: 8px;
+    margin: 0;
+    padding: 0 20px;
+}
+
+/* 본문 텍스트 */
+.text-content {
+    margin-top: 80px;
+}
+
+.text-paragraph {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #4A4A3A;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
+.text-paragraph.first {
+    margin-bottom: 50px;
+}
+
+.text-paragraph.second {
+    margin-bottom: 50px;
+}
+
+.text-paragraph.third {
+    margin-bottom: 0;
+}
+
+/* 강조 텍스트 스타일 */
+.text-paragraph strong {
+    font-weight: 600;
+    color: #6B7548;
+}
+
+/* 버튼 스타일 */
+.start-button {
+    margin-top: 80px;
+    background-color: #A4AE7C;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 50px;
+    padding: 18px 70px;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Noto Serif KR', serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 15px rgba(164, 174, 124, 0.2);
+}
+
+.start-button:hover {
+    background-color: #8B956D;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(164, 174, 124, 0.3);
+}
+
+.start-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(164, 174, 124, 0.2);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
+
+    .main-title {
+        font-size: 36px;
+        letter-spacing: 4px;
+    }
+
+    .text-paragraph {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .start-button {
+        padding: 15px 50px;
+        font-size: 16px;
+    }
+
+    .corner-decoration {
+        margin: 0 10px;
+    }
+    
+    .decorative-line {
+        height: 25px;
+    }
+}

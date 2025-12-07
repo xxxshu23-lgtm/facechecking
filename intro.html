@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>관상 맞혀보기 – 인트로</title>
+
+    <style>
+      /* KoPub Batang 웹폰트: Regular(400) / Medium(500) / Bold(700) */
+      @font-face {
+        font-family: "KoPub Batang";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/KoPubWorldBatang_Regular.woff")
+          format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "KoPub Batang";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/KoPubWorldBatang_Medium.woff")
+          format("woff");
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "KoPub Batang";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/KoPubWorldBatang_Bold.woff")
+          format("woff");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      :root {
+        --bg: #f9f9f3;
+        --text: #334d00;
+        --title: #3a5700;
+        --pill: #a5b48e;
+        --pill-hover: #99aa78;
+        --muted: #8ca269;
+        --maxw: 780px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "KoPub Batang", serif; /* ✅ 전역 폰트 변경 */
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* 가운데 정렬된 레이아웃 */
+      .wrap {
+        width: min(92vw, var(--maxw));
+        text-align: center;
+        padding-block: clamp(48px, 12vh, 140px);
+      }
+
+      .eyebrow {
+        font-size: clamp(12px, 1.2vw, 16px);
+        color: var(--muted);
+        letter-spacing: 0.02em;
+        margin-bottom: 14px;
+        font-weight: 500; /* KoPub Medium */
+      }
+
+      h1 {
+        margin: 0 0 26px;
+        color: var(--title);
+        font-weight: 700; /* KoPub Bold */
+        font-size: clamp(26px, 3.2vw, 44px);
+        line-height: 1.25;
+      }
+
+      .subtitle {
+        color: #7a8b63;
+        font-size: clamp(13px, 1.25vw, 18px);
+        margin: 0 0 clamp(42px, 5vh, 60px);
+        font-weight: 400;
+      }
+
+      /* 버튼 스타일 */
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: clamp(14px, 1.6vw, 22px);
+        border: none;
+        background: var(--pill);
+        color: #233000;
+        padding: clamp(18px, 2.4vw, 28px) clamp(34px, 6vw, 72px);
+        border-radius: 999px;
+        font-size: clamp(22px, 3vw, 40px);
+        font-weight: 700; /* KoPub Bold */
+        cursor: pointer;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04) inset;
+        transition: transform 0.15s ease, background 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .cta:hover {
+        background: var(--pill-hover);
+        transform: translateY(-1px);
+      }
+      .cta:active {
+        transform: translateY(0);
+      }
+      .cta:focus-visible {
+        outline: 3px solid color-mix(in oklab, var(--pill) 70%, #fff);
+        outline-offset: 4px;
+      }
+
+      .cta svg {
+        width: 1em;
+        height: 1em;
+        flex: 0 0 auto;
+      }
+
+      /* 주의 문구 */
+      .warn {
+        margin-top: clamp(36px, 6vh, 64px);
+        color: var(--muted);
+      }
+      .warn .label {
+        font-weight: 700; /* KoPub Bold */
+        margin-bottom: 10px;
+        font-size: clamp(12px, 1.1vw, 15px);
+        letter-spacing: 0.02em;
+      }
+      .warn p {
+        margin: 0 auto;
+        font-size: clamp(11px, 1.05vw, 14px);
+        line-height: 1.7;
+        max-width: 560px;
+        color: #7e9166;
+        font-weight: 400;
+      }
+
+      @media (min-width: 1400px) {
+        .wrap {
+          padding-block: 120px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="wrap">
+      <div class="eyebrow">초보자를 위한 관상 쉽게 이해하기</div>
+
+      <!-- 이동 경로는 필요에 따라 변경 -->
+      <button class="cta" type="button" onclick="location.href='face.html'">
+        <span>관상 맞혀보기</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path
+            d="M13.5 5.5a1 1 0 0 1 1.4-1.4l6.5 6.5a1 1 0 0 1 0 1.4l-6.5 6.5a1 1 0 1 1-1.4-1.4L18.59 13H3a1 1 0 1 1 0-2h15.59L13.5 5.5Z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+
+      <div class="warn" role="note" aria-label="주의 사항">
+        <div class="label">※ 너무 맹신하지 마세요 ※</div>
+        <p>
+          관상은 재미있는 문화적 요소로 즐기되, 너무 신뢰해서는 안 됩니다.
+          사람의 운명과 성격은 한 가지 관점만으로 결정되지 않으며, 개인의 노력,
+          환경, 선택, 교육 등 수많은 변수가 영향을 미칩니다. 관상 결과가 좋다고
+          해서 방심하거나, 좋다고 해서 아무 노력 없이 기대하는 것은 위험합니다.
+        </p>
+      </div>
+    </main>
+  </body>
+</html>

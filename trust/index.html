@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>결과 공개 - 관상 팩트 체크</title>
+
+  <!-- ✅ CSS 연결 -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- ✅ 폰트 -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body class="no-scroll">
+  <main class="result-page">
+    <div class="container">
+      <!-- ✅ 타이틀 -->
+      <h1 class="page-title">결과 공개</h1>
+
+      <!-- ✅ 얼굴 이미지 컨테이너 -->
+      <div class="face-container">
+        <!-- 기본 얼굴 -->
+        <img src="../img/no_trust.png" alt="기본 얼굴" class="layer-image face-base" draggable="false" />
+
+        <!-- 코 -->
+        <img src="../img/trust_nose.png" alt="코" class="layer-image nose-layer" draggable="false" />
+
+        <!-- 입 -->
+        <img src="../img/trust_lips.png" alt="입" class="layer-image mouth-layer" draggable="false" />
+
+        <!-- 눈 -->
+        <img src="../img/trust_eye.png" alt="눈/눈썹" class="layer-image eye-layer" draggable="false" />
+      </div>
+
+      <!-- ✅ 안내 문구 -->
+      <p class="info-text">
+        ※ 관상은 과학적 근거가 없으니 참고로만 보시길 바랍니다.
+      </p>
+
+      <!-- ✅ 버튼 영역 -->
+      <div class="navigation-buttons">
+        <!-- 이전 -->
+        <button class="nav-btn prev-btn" type="button">
+          <span class="arrow">←</span> 이전
+        </button>
+
+        <!-- 더 알아보기 -->
+        <button class="nav-btn" id="moreInfoBtn" type="button">
+          더 알아보기
+        </button>
+
+        <!-- 마무리 -->
+        <button class="nav-btn finish-btn" id="finishBtn" type="button">
+          마무리 <span class="arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ✅ JS 연결 -->
+  <script src="js/main.js"></script>
+
+  <!-- ✅ 마무리 버튼 이동 (상대경로 수정됨) -->
+  <script>
+    document
+      .getElementById("finishBtn")
+      .addEventListener("click", function (e) {
+        e.preventDefault();
+        document.body.style.transition = "opacity 0.5s ease";
+        document.body.style.opacity = "0";
+        setTimeout(function () {
+          window.location.href = "../finish/index.html"; // ✅ 올바른 경로
+        }, 500);
+      });
+  </script>
+</body>
+
+</html>

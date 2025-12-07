@@ -1,0 +1,411 @@
+/* 전역 스타일 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: #f9f9f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 40px 80px; /* 전체 여백 줄임 */
+}
+
+/* =========================
+   article.html (뉴스 기사)
+========================= */
+.article-page {
+  min-height: 100vh;
+  padding: 80px 0;
+}
+
+.article-title {
+  font-family: "Noto Serif KR", serif;
+  font-size: 42px;
+  font-weight: 700;
+  text-align: center;
+  color: #2c3a1e;
+  margin-bottom: 80px;
+  line-height: 1.5;
+}
+
+.article-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* 텍스트 + 이미지 레이아웃 */
+.text-image-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+  margin-bottom: 100px;
+}
+
+.article-text {
+  flex: 1;
+  max-width: 900px;
+}
+
+.article-text p {
+  font-size: 17px;
+  line-height: 1.95;
+  margin-bottom: 22px;
+  text-align: justify;
+  word-break: keep-all;
+  color: #333;
+}
+
+.article-image-container {
+  width: 320px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.perpetrator-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.image-label {
+  font-size: 16px;
+  color: #555;
+  font-weight: 500;
+}
+
+/* 매칭 섹션 */
+.matching-section {
+  margin-top: 120px;
+  padding-top: 60px;
+  border-top: 1px solid #d5d5c8;
+}
+
+.section-title {
+  font-family: "Noto Serif KR", serif;
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  color: #2c3a1e;
+  margin-bottom: 70px;
+}
+
+.matching-comparison {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+  margin-bottom: 50px;
+}
+
+.comparison-item {
+  text-align: center;
+}
+
+.comparison-sketch,
+.comparison-photo {
+  width: 380px;
+  display: block;
+  margin: 0 auto 20px;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.comparison-sketch:hover,
+.comparison-photo:hover {
+  transform: scale(1.05);
+}
+
+.comparison-label {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* 스탬프 */
+.fact-check-stamp {
+  position: absolute;
+  width: 200px;
+  bottom: -40px;
+  right: -140px;
+  transform: rotate(8deg);
+  opacity: 0.95;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.25));
+  z-index: 10;
+}
+
+/* 돌아가기 버튼 */
+.back-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.back-btn {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 14px 50px;
+  background-color: transparent;
+  color: #5a6b3e;
+  border: 2px solid #5a6b3e;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #5a6b3e;
+  color: #f9f9f4;
+  transform: translateY(-2px);
+}
+
+/* ===== 결과 공개 페이지 (index.html) ===== */
+.result-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start; /* 중앙에서 상단으로 이동 */
+  justify-content: center;
+  padding-top: 50px; /* 상단 공간 확보 */
+}
+
+.page-title {
+  font-family: "Noto Serif KR", serif;
+  font-size: 42px;
+  font-weight: 600;
+  text-align: center;
+  color: #5a6b3e;
+  margin-bottom: 50px; /* 아래 여백 조정 */
+  letter-spacing: 2px;
+}
+
+/* 얼굴 컨테이너 */
+.face-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  margin: 0 auto 40px; /* 아래 여백 줄임 */
+}
+
+/* 레이어 이미지 공통 스타일 - 모두 absolute로 겹침 */
+.layer-image {
+  position: absolute;
+  height: auto;
+  display: block;
+}
+
+/* 베이스: 여자 얼굴 (중앙) */
+.face-base {
+  width: 460px; /* 400 → 460 으로 확대 */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* 레이어 1: 코 */
+.nose-layer {
+  width: 300px;
+  left: 0px;
+  top: 178px;
+  z-index: 2;
+}
+
+/* 레이어 2: 입/하관 */
+.mouth-layer {
+  width: 350px;
+  left: -30px;
+  bottom: 120px;
+  z-index: 3;
+}
+
+/* 레이어 3: 눈/눈썹 */
+.eye-layer {
+  width: 420px;
+  right: -170px;
+  top: 30px;
+  z-index: 4;
+}
+
+/* 안내 문구 */
+.info-text {
+  text-align: center;
+  font-size: 14px;
+  color: #7a8a5e;
+  font-weight: 400;
+  margin-bottom: 30px; /* 아래 여백 */
+}
+
+/* 네비게이션 버튼 */
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.nav-btn {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 14px 40px;
+  border: 2px solid #5a6b3e;
+  background-color: transparent;
+  color: #5a6b3e;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.prev-btn {
+  background-color: transparent;
+  color: #5a6b3e;
+}
+
+.prev-btn:hover {
+  background-color: #5a6b3e;
+  color: #f9f9f4;
+  transform: translateY(-2px);
+}
+
+.next-btn {
+  background-color: #5a6b3e;
+  color: #f9f9f4;
+}
+
+.next-btn:hover {
+  background-color: #4a5b2e;
+  transform: translateY(-2px);
+}
+
+.arrow {
+  font-size: 20px;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 1200px) {
+  .container {
+    padding: 30px 50px;
+  }
+
+  .page-title {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+
+  .face-container {
+    max-width: 700px;
+    height: 400px;
+  }
+
+  .face-base {
+    width: 320px;
+  }
+
+  .nose-layer {
+    width: 240px;
+    top: 140px;
+  }
+
+  .mouth-layer {
+    width: 280px;
+    bottom: 90px;
+  }
+
+  .eye-layer {
+    width: 360px;
+    right: -120px;
+    top: 30px;
+  }
+
+  .navigation-buttons {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 30px;
+  }
+
+  .page-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .face-container {
+    max-width: 500px;
+    height: 300px;
+  }
+
+  .face-base {
+    width: 240px;
+  }
+
+  .nose-layer {
+    width: 180px;
+    top: 100px;
+  }
+
+  .mouth-layer {
+    width: 200px;
+    bottom: 60px;
+  }
+
+  .eye-layer {
+    width: 260px;
+    right: -80px;
+    top: 20px;
+  }
+
+  .nav-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .face-container {
+    max-width: 360px;
+    height: 220px;
+  }
+
+  .face-base {
+    width: 180px;
+  }
+
+  .nose-layer {
+    width: 140px;
+    top: 70px;
+  }
+
+  .mouth-layer {
+    width: 160px;
+    bottom: 40px;
+  }
+
+  .eye-layer {
+    width: 200px;
+    right: -40px;
+    top: 15px;
+  }
+
+  .nav-btn {
+    font-size: 16px;
+    padding: 10px 25px;
+  }
+}

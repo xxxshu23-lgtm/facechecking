@@ -1,0 +1,830 @@
+/* ----------------------------------------------
+  Noto Serif KR 폰트
+---------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&display=swap");
+
+:root {
+  --face-area-width: 360px;
+  --face-area-height: 493px;
+
+  --ear-top: 40%;
+  --ear-left: 4%;
+  --ear-width: 70px;
+  --ear-height: 70px;
+
+  --eye-top: 37%;
+  --eye-left: 54%;
+  --eye-width: 63px;
+  --eye-height: 63px;
+
+  --mouth-top: 59%;
+  --mouth-left: 35%;
+  --mouth-width: 85px;
+  --mouth-height: 85px;
+
+  --info-box-eye-top: 25%;
+  --info-box-eye-left: 80%;
+}
+
+body {
+  background-color: #f9f9f4;
+  font-family: "Noto Serif KR", serif;
+  color: #26320f;
+  margin: 0;
+  padding: 0;
+  transform-origin: top center;
+}
+
+/* 전체 scale 축소, 화면 줄어도 비율 유지 */
+@media (max-width: 1600px) {
+  body {
+    transform: scale(0.9);
+  }
+}
+@media (max-width: 1400px) {
+  body {
+    transform: scale(0.8);
+  }
+}
+@media (max-width: 1200px) {
+  body {
+    transform: scale(0.7);
+  }
+}
+@media (max-width: 1000px) {
+  body {
+    transform: scale(0.6);
+  }
+}
+
+.first-page-container {
+  position: relative;
+  width: 100%;
+  max-width: 1440px; /* 중앙 구역 고정 */
+  margin: 0 auto; /* 정확히 가운데 정렬 */
+  padding: 60px 60px 40px 120px; /* 좌측 네비 고려한 패딩 */
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* ----------------------------------------------
+  Left Navigation
+---------------------------------------------- */
+.vertical-nav {
+  position: absolute;
+  left: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.nav-line {
+  position: absolute;
+  left: 50px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #7a8a5c;
+}
+
+.nav-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #3d4a27;
+  margin-bottom: 40px;
+  white-space: pre-line;
+}
+
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  padding: 5px 0;
+  position: relative;
+  opacity: 0.75;
+}
+
+.nav-item.active {
+  opacity: 1;
+}
+
+.nav-icon {
+  width: 28px;
+  height: 28px;
+  margin-left: 70px;
+}
+
+.nav-item::before {
+  content: "";
+  position: absolute;
+  left: 70px;
+  top: 50%;
+  width: 40px;
+  height: 1.5px;
+  background: #7a8a5c;
+  opacity: 0.4;
+}
+.nav-item.active::before {
+  opacity: 1;
+}
+
+/* ----------------------------------------------
+  Corner Frames
+---------------------------------------------- */
+.corner-frame {
+  position: absolute;
+  width: 100px;
+  height: 80px;
+  border: 3px solid #6b7f3a;
+  z-index: 999;
+}
+.corner-frame.top-left {
+  top: 20px;
+  left: 20px;
+  border-right: none;
+  border-bottom: none;
+}
+.corner-frame.top-right {
+  top: 20px;
+  right: 20px;
+  border-left: none;
+  border-bottom: none;
+}
+.corner-frame.bottom-left {
+  bottom: 20px;
+  left: 20px;
+  border-right: none;
+  border-top: none;
+}
+.corner-frame.bottom-right {
+  bottom: 20px;
+  right: 20px;
+  border-left: none;
+  border-top: none;
+}
+
+/* ----------------------------------------------
+  HUD
+---------------------------------------------- */
+/* --- 상단 바 --- */
+.top-bar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px; /* 위아래 줄이고 전체 균형 맞춤 */
+  margin-top: 20px;
+  color: #5b6b2f;
+}
+
+/* 왼쪽 #CAM 03 태그 */
+.cam-tag {
+  border: 1px solid #5b6b2f;
+  padding: 4px 10px;
+  font-size: 13px;
+  border-radius: 4px;
+  background: #e6edd9;
+}
+
+/* 중앙 HUD (배터리 + 날짜) */
+.top-center {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 배터리 이미지 크기 줄임 */
+.battery-img {
+  height: 18px;
+}
+
+/* 날짜 이미지 크기 줄임 */
+.year-img {
+  height: 18px;
+}
+
+/* ----------------------------------------------
+  Face / Annotation System
+---------------------------------------------- */
+.main-card {
+  text-align: center;
+  margin-top: 40px;
+  position: relative;
+}
+
+.face-area {
+  position: relative;
+  display: inline-block;
+  margin-top: 40px;
+  width: var(--face-area-width);
+  height: var(--face-area-height);
+}
+
+.face-img {
+  position: absolute;
+  top: -20px; /* 위로 20px 올림 */
+  left: -60px; /* 오른쪽으로 10px 이동 */
+  width: 120%;
+  height: auto; /* 자동 비율 유지 (깨짐 방지) */
+  object-fit: contain;
+  z-index: 1;
+}
+
+.annotation-group {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.annotation-group .info-box {
+  z-index: 5;
+}
+
+.target-box-img {
+  position: absolute;
+  width: 80px; /* 필요하면 수정 */
+  height: auto;
+  pointer-events: none;
+}
+
+.ear-group .target-box-img {
+  width: 20%;
+  height: 18%;
+  top: 49%;
+  left: -9%;
+}
+.eye-group .target-box-img {
+  top: 43%;
+  left: 50%;
+}
+.mouth-group .target-box-img {
+  top: 70%;
+  left: 32%;
+}
+.jaw-group .target-box-img {
+  top: 72%;
+  left: 40%;
+}
+
+.target-box {
+  position: absolute;
+  border: 1px solid #7a8a5c;
+}
+.target-box::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  border: 2.5px solid #7a8a5c;
+}
+
+.eye-image-box {
+  width: 350px;
+  height: auto;
+  border: 2px solid #6b8e3d;
+  background: transparent;
+  margin-bottom: 6px;
+  position: relative;
+  left: 400px; /* 좌우 이동 */
+  top: 8px; /* 위아래 이동 */
+}
+.eye-image {
+  width: 100%;
+  display: block;
+}
+
+/* Face part boxes */
+.ear-group .target-box {
+  top: var(--ear-top);
+  left: var(--ear-left);
+  width: var(--ear-width);
+  height: var(--ear-height);
+}
+.eye-group .target-box {
+  top: var(--eye-top);
+  left: var(--eye-left);
+  width: var(--eye-width);
+  height: var(--eye-height);
+}
+.mouth-group .target-box {
+  top: var(--mouth-top);
+  left: var(--mouth-left);
+  width: var(--mouth-width);
+  height: var(--mouth-height);
+}
+.jaw-group .target-box {
+  top: var(--jaw-top);
+  left: var(--jaw-left);
+  width: var(--jaw-width);
+  height: var(--jaw-height);
+}
+
+/* ----------------------------------------------
+  Info Boxes
+---------------------------------------------- */
+.info-box {
+  position: absolute;
+  background: #e6edd9;
+  border: 1.5px solid #7a8a5c;
+  color: #3d4a27;
+  padding: 12px 15px;
+  font-size: 13px;
+  line-height: 1.6;
+  width: 240px;
+  z-index: 3;
+
+  color: #b0d85a !important; /* 부드러운 연두 텍스트 */
+}
+
+.info-box h4 {
+  color: #ffffff !important; /* 제목은 약간 더 밝은 연두 */
+}
+
+/* 귀 */
+.ear-group .info-box {
+  position: absolute;
+  top: 150px; /* 위치 */
+  left: 260px; /* 위치 */
+  width: 240px; /* ✅ 가로 크기 */
+  padding: 4px 10px !important; /* 내부 여백 */
+  height: auto !important; /* ✅ 높이 자동 */
+  line-height: 1.2 !important;
+  background-color: #6b8e3d;
+  color: white;
+}
+.ear-group .info-box h4 {
+  margin-top: 0;
+  margin-bottom: 6px; /* 제목 아래 약간만 */
+  font-size: 15px; /* 필요하면 조정 */
+}
+
+/* 눈썹 */
+.eyebrow-group .info-box {
+  top: 15%;
+  left: 75%;
+  width: 260px;
+}
+
+/* 입 */
+.mouth-group .info-box {
+  top: 58%;
+  left: 75%;
+  width: 260px;
+}
+
+.mouth-group .info-box h4 {
+  margin-top: 0 !important;
+  margin-bottom: 4px !important;
+  font-size: 15px; /* 필요하면 조절 */
+}
+
+/* 눈 (이미지 + 텍스트) */
+.eye-group .info-box {
+  top: var(--info-box-eye-top);
+  left: var(--info-box-eye-left);
+  width: 4000px;
+  display: flex;
+  gap: 12px;
+}
+.eye-group .info-box img.eye-crop-img {
+  max-width: 55px !important;
+  max-height: 55px !important;
+  width: 55px !important;
+  height: auto !important;
+}
+
+/* ----------------------------------------------
+  Headline
+---------------------------------------------- */
+.title-main {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-right: 6px;
+}
+
+.title-sub {
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.main-text h1 {
+  position: relative;
+  z-index: 10;
+  font-size: 32px;
+  margin-top: 500px;
+  font-weight: 800;
+  color: #3d4a27;
+  white-space: nowrap;
+}
+
+/* ----------------------------------------------
+  Below Sections — untouched
+---------------------------------------------- */
+.section {
+  margin-top: 100px;
+  text-align: center;
+}
+.section h3 {
+  font-size: 20px;
+  margin-bottom: 40px;
+  color: #3c4a1c;
+}
+.image-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.image-row img {
+  width: 220px;
+  border-radius: 4px;
+}
+.image-row.three img {
+  width: 200px;
+}
+.footer {
+  text-align: center;
+  color: #5b6b2f;
+  padding: 80px 0;
+  font-size: 14px;
+}
+
+/* ==============================
+   각 info box 위치 조정 (픽셀 고정)
+============================== */
+
+/* 귀 설명 위치 */
+.ear-group .info-box {
+  top: 40%;
+  left: -180px;
+  width: 220px;
+}
+
+/* 눈썹 설명 */
+.eyebrow-group .info-box {
+  top: 12%;
+  right: -240px;
+  width: 230px;
+}
+
+/* 눈 설명 */
+.eye-group .info-box {
+  top: 30%;
+  right: -260px;
+  width: 280px;
+}
+
+/* 입 설명 */
+.mouth-group .info-box {
+  top: 65%;
+  right: -200px;
+  width: 240px;
+}
+
+/* 타겟 박스 위치 (정확한 비율 반영) */
+.ear-group .target-box {
+  top: 38%;
+  left: 3%;
+  width: 60px;
+  height: 60px;
+}
+.eyebrow-group .target-box {
+  top: 32%;
+  left: 45%;
+  width: 50px;
+  height: 50px;
+}
+.eye-group .target-box {
+  top: 37%;
+  left: 40%;
+  width: 63px;
+  height: 63px;
+}
+.mouth-group .target-box {
+  top: 59%;
+  left: 35%;
+  width: 85px;
+  height: 85px;
+}
+.jaw-group .target-box {
+  top: 72%;
+  left: 40%;
+  width: 90px;
+  height: 90px;
+}
+
+/* ============================
+   INFO BOX ABSOLUTE POSITIONS
+   ============================ */
+
+.ear-group .info-box {
+  position: absolute;
+  top: 38%;
+  left: -35%;
+  width: 260px;
+}
+
+.eyebrow-group .info-box {
+  position: absolute;
+  top: 22%;
+  left: 35%;
+  width: 260px;
+}
+
+.eye-group .info-box {
+  position: absolute;
+  top: 30%;
+  left: 105%;
+  width: 300px;
+}
+
+.mouth-group .info-box {
+  position: absolute;
+  top: 63%;
+  left: 15%;
+  width: 250px;
+}
+
+.annotation-group .info-box {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* =============================
+   FACE INFO BOX REFINED POSITIONS
+   ============================= */
+
+/* 귀 (왼쪽 중간) */
+/* 귀 */
+.ear-group .info-box {
+  top: 38%;
+  left: -130%;
+  width: 220px;
+  display: inline-block;
+  white-space: normal;
+  text-align: left;
+  line-height: 1.6;
+  background-color: #6b8e3d; /* 녹색 배경 */
+  color: white; /* 흰색 텍스트 */
+  white-space: nowrap;
+  line-height: 2; /* 한글 가독성 */
+  border-radius: 0; /* 각진 모서리 */
+  padding: 10px 14px;
+}
+
+/* 눈썹 */
+.eyebrow-group .info-box {
+  top: 12%;
+  left: 70%;
+  width: 350px;
+  display: inline-block;
+  white-space: nowrap;
+  text-align: left;
+  line-height: 1.2; /* 최소한의 여유 */
+  background-color: #6b8e3d;
+  color: white;
+  border-radius: 0;
+  padding: 6px 18px; /* 상하 패딩을 6px로 더 줄임 */
+}
+
+/* 눈 */
+.eye-group .info-box {
+  top: 30%;
+  left: 95%;
+  width: 350px;
+  display: inline-block;
+  white-space: normal;
+  text-align: left;
+  line-height: 1.6;
+  background-color: #6b8e3d; /* 녹색 배경 */
+  color: white; /* 흰색 텍스트 */
+  white-space: nowrap;
+  line-height: 1.4; /* 한글 가독성 */
+  border-radius: 0; /* 각진 모서리 */
+}
+
+/* 입 */
+.mouth-group .info-box {
+  top: 62%;
+  left: 10%;
+  width: 255px;
+  display: inline-block;
+  white-space: normal;
+  text-align: left;
+  line-height: 1.6;
+  background-color: #6b8e3d; /* 녹색 배경 */
+  color: white; /* 흰색 텍스트 */
+  white-space: nowrap;
+  line-height: 1.4; /* 한글 가독성 */
+  border-radius: 0; /* 각진 모서리 */
+}
+
+/* 하관 */
+/* 하관 */
+
+/* ✅ 귀 정보 박스 위치 수동 지정 */
+.ear-group .info-box {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  position: absolute;
+  line-height: 1.5 !important; /* 자연스럽게 */
+  height: auto !important;
+  top: 180px; /* ← 이거만 바꿔가면서 조정 */
+  left: -270px; /* ← 이것도 조정 */
+}
+.eyebrow-group .info-box {
+  position: absolute;
+  top: 80px;
+  left: 280px;
+}
+
+.eye-group .info-box {
+  padding-top: 5px !important;
+  position: absolute;
+  top: 150px;
+  left: 400px;
+  width: 321px !important;
+}
+.eye-group .info-box .text-content {
+  line-height: 1.7 !important; /* 원하는 값 */
+}
+
+.mouth-group .info-box {
+  position: absolute;
+  top: 340px;
+  left: -200px;
+  width: 200px !important;
+}
+
+.jaw-group .info-box {
+  position: absolute;
+  top: 420px;
+  left: -200px;
+  width: 215px !important; /* ✅ 가로 길이 */
+  height: 75px !important;
+  padding-top: 1px;
+  padding-bottom: 2px;
+  line-height: 1;
+}
+
+.main-card {
+  animation: breathe 5s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0% {
+    transform: scale(1) translateY(0px);
+  }
+  50% {
+    transform: scale(1.01) translateY(-2px);
+  }
+  100% {
+    transform: scale(1) translateY(0px);
+  }
+}
+
+.target-box {
+  animation: pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+.scan-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(170, 255, 170, 0.4);
+  animation: scan 5s linear infinite;
+  pointer-events: none;
+}
+@keyframes scan {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    top: 100%;
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  animation: grain 1s steps(2) infinite;
+}
+
+@keyframes grain {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-1px, 1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.face-img {
+  animation: drawFace 2.2s ease forwards;
+  clip-path: inset(0 0 0 0 round 0);
+}
+@keyframes drawFace {
+  0% {
+    filter: brightness(0) blur(2px);
+    opacity: 0;
+  }
+  100% {
+    filter: brightness(1) blur(0);
+    opacity: 1;
+  }
+}
+
+.zoom-in {
+  opacity: 0;
+  transform: scale(0.92); /* 조금만 작게 */
+  animation: faceFade 1.6s ease-out forwards;
+}
+
+@keyframes faceFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.info-box {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: fadeUp 1s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* 클릭 가능 시각 피드백 */
+.result-page {
+  cursor: pointer;
+}
